@@ -1,6 +1,22 @@
-# Project Name
+# Chat-AI
 
-Brief description of what the project does.
+This project is a chat demonstration with an artificial intelligence, with mocked services.
+
+## Technologies Used
+
+### Front End
+
+- React
+- Vite
+- Tailwind
+- Redux
+
+### Back End
+
+- Node
+- Express
+
+The entire project was written in TypeScript.
 
 ## Installation
 

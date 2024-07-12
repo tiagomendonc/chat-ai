@@ -3,7 +3,6 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import { Message } from './types/domain/Message';
 import { responses } from './db/data';
-import fs from 'fs';
 
 const app = express();
 const port = 3030;
