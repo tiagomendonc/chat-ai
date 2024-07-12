@@ -1,18 +1,57 @@
-import { IoSend } from 'react-icons/io5';
+import SendIcon from '../assets/icons/send-icon.svg';
+import { useState, ChangeEvent, KeyboardEvent, useRef, useEffect } from 'react';
 
-function QuestionInput() {
+type QuestionInputProps = {
+  addMessage: (text: string, isUser: boolean) => void;
+  navigate?: (url: string) => void;
+};
+
+function QuestionInput({ addMessage, navigate }: QuestionInputProps) {
+  const [inputValue, setInputValue] = useState<string>('');
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  const handleSendMessage = () => {
+    if (inputValue.trim() !== '') {
+      addMessage(inputValue, true);
+      setInputValue('');
+      if (navigate) {
+        navigate('/new-conversation');
+      }
+    }
+  };
+
+  const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    setInputValue(event.target.value);
+  };
+
+  const handleKeyPress = (event: KeyboardEvent<HTMLTextAreaElement>) => {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+      handleSendMessage();
+    }
+  };
+
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = 'auto';
+      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+    }
+  }, [inputValue]);
+
   return (
-    <div className="relative w-3/4">
-      <input
-        type="text"
-        placeholder="O que você quer saber?"
-        className="border-2 border-gray-500 rounded-lg p-4 h-12 w-full"
+    <div className="flex items-center bg-gray-100 p-2 rounded-lg w-full md:w-8/12">
+      <textarea
+        ref={textareaRef}
+        value={inputValue}
+        placeholder="Enter your message..."
+        className="flex-grow p-2 bg-gray-100 max-h-28 rounded-lg outline-none resize-none overflow-auto scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-400 scrollbar-track-gray-100"
+        onChange={handleChange}
+        onKeyPress={handleKeyPress}
+        rows={1}
       />
-      <div className="absolute inset-y-0 right-0 flex items-center pr-3">
-        <button className="flex items-center justify-center w-8 h-8 rounded-full hover:bg-gray-200">
-          <IoSend className="text-gray-500" />
-        </button>
-      </div>
+      <button className="ml-2" onClick={handleSendMessage}>
+        <img src={SendIcon} alt="Send" />
+      </button>
     </div>
   );
 }
