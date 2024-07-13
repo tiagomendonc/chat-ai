@@ -39,7 +39,7 @@ function QuestionInput({ addMessage, navigate }: QuestionInputProps) {
   }, [inputValue]);
 
   return (
-    <div className="flex items-center bg-gray-100 p-2 rounded-lg w-full md:w-8/12">
+    <div className="flex items-center bg-gray-100 p-2 rounded-lg w-full md:w-full">
       <textarea
         ref={textareaRef}
         value={inputValue}

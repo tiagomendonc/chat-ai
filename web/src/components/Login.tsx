@@ -48,7 +48,7 @@ function Login() {
       [FormField.PASSWORD]: passwordError,
     };
 
-    const inputClasses = `rounded-md p-1 border-2 outline-none focus:bg-slate-50`;
+    const inputClasses = `rounded-md p-1 border-2 outline-none focus:bg-slate-50 py-2 px-4 w-full`;
     const focusBorderClass = error[input]
       ? 'focus:border-red-400'
       : 'focus:border-cyan-400';
@@ -58,10 +58,10 @@ function Login() {
 
   return (
     <section className="min-h-screen flex items-center justify-center bg-gradient-to-r from-cyan-500 from-10% via-indigo-500 via-50% to-sky-500 to-100%">
-      <div className="flex shadow-2xl">
-        <div className="flex flex-col items-center justify-center text-center p-20 gap-8 bg-white rounded-2xl">
+      <div className="flex shadow-2xl sm:w-auto sm:h-auto w-full h-full justify-center">
+        <div className="flex flex-col items-center justify-center text-center p-20 gap-8 bg-white sm:rounded-2xl w-full">
           <h1 className="text-5xl font-medium">Welcome</h1>
-          <div className={`flex flex-col text-2xl text-left gap-1`}>
+          <div className={`flex flex-col text-base text-left gap-1 w-full`}>
             <span>Email</span>
             <input
               type="text"
@@ -70,7 +70,7 @@ function Login() {
               placeholder={!emailError ? '' : emailError?.message}
             />
           </div>
-          <div className="flex flex-col text-2xl text-left gap-1">
+          <div className="flex flex-col text-base text-left gap-1 w-full">
             <span>Password</span>
             <input
               type="password"
@@ -84,7 +84,7 @@ function Login() {
             </div>
           </div>
           <button
-            className="px-10 py-2 text-2xl rounded-md bg-gradient-to-tr from-green-400 to-blue-500 hover:from-blue-500 hover:to-blue-800 text-white"
+            className="px-10 py-2 text-2xl rounded-md bg-gradient-to-tr w-full from-green-400 to-blue-500 hover:from-blue-500 hover:to-blue-800 text-white"
             onClick={() => submitForm()}
           >
             Login

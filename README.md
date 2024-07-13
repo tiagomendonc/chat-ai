@@ -61,6 +61,8 @@ chat-ai/
 |   |   ├── assets/
 |   |   |   └── icons
 |   |   ├── components/
+|   |   |   └── styles/
+|   |   ├── constants/
 |   |   ├── store/
 |   |   ├── types/
 |   |   ├── utils/
